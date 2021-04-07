@@ -12,7 +12,7 @@
 > * Back-end (Beveiligings doelstellingen)
 > * Front-end (Gebruikers ervaringen)
 
-####Ontwerpfase
+#### Ontwerpfase
 
 > Functionele kant
 > * Uiterlijk van de applicatie
@@ -25,7 +25,7 @@
 
 ---
 
-####Grotere projecten
+#### Grotere projecten
 
 - Gebruik maken van projectmanagement
 - Meer overzicht op de voortgang
@@ -33,7 +33,7 @@
 
 ---
 
-###Testen
+### Testen
 - Code testen op functionaliteit (word het verwachte resultaat gegeven?)
 - Voldoet de applicatie aan de vooropgestelde doelstellingen?
 - Zijn de risico's voldoende opgevangen?
@@ -41,14 +41,14 @@
 
 ---
 
-###Onderhouden
+### Onderhouden
 Documentatie om de applicatie te onderhouden of te gebruiken
 - Handleiding over de werking van de applicatie voor de gebruikers
 - Commentaar toevoegen zodat er duidelijk is wat de applicatie op welk moment doet en waarom hiervoor gekozen is.
 
 ---
 
-###Requirements opstellen
+### Requirements opstellen
 Je begint eerst om de randvoorwaarden te verzamelen, oftewel aan welke eisen moet de applicatie voldoen.
 Dit gaat met stapjes die steeds specifieker worden.
 
