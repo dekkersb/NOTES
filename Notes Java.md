@@ -45,6 +45,7 @@ public class VoorbeeldIfElse {
 }
 ```
 - Je kan hier nog meerdere "else if" aan toevoegen. Worden dit er echter teveel gebruik dan switch/case.
+  Om de code te stoppen als een waarde wordt gevonden gebruik je break; wordt er geen waarde gevonden gebruik dan default. (dan wordt er een standaard bericht geplaatst)
   https://www.youtube.com/watch?v=O4KGYGQvHmw&
 ```java
 public class WeekdagenSwitch {
@@ -292,4 +293,79 @@ public class VoorbeeldWhileLussen {
     }
 }
 ```
+---
+###Relaties
+(Has-a)
+
+Er zijn 2 types relaties: Aggregratie en Compositie
+
+>Aggregratie
+> 
+> Een aggregatie is een relatie waarin geen eigenaarschap zit vastgelegd. Het ene object kan dus leven zonder het andere object.
+> 
+> * Gaat maar 1 kant op.
+> * Een 0 tot meer relatie (een object kan 0 tot meerdere andere objecten bevatten)
+
+
+>Compositie
+> 
+> Een compositie-relatie heeft dat wel. Als je een Car-object hebt met verschillende Part-objecten, waar de Car de eigenaar is, dan blijven de Part objecten alleen bestaan zolang het Car-object blijft bestaan. Verwijder je het Car-object dan worden ook alle Part-objecten verwijderd.
+
+>Kardinaliteiten
+>
+>Het aantal relaties die objecten met elkaar hebben.
+>- 0 tot 1 relatie: Een persoon heeft 0 of 1 rijbewijzen.
+>- 1 tot 1 relatie: Een kind heeft altijd 1 biologische vader.
+>- 0 tot N (of meer) relatie. Een persoon bezit 0 tot meerdere auto's
+>- 1 tot N relatie. Een bon bevat 1 tot meer bestelregels.
+>- Een N tot N relatie. Meerdere personen zijn eigenaar van een bedrijf en een bedrijf heeft meerdere eigenaren.
+---
+
+###Super- en subklassen
+https://www.youtube.com/watch?v=iV-rrFETXjY
+
+Als je veel dezelfde variabelen gebruikt wil je deze zoveel mogelijk opnieuw gebruiken.
+Dit kan het beste met een super klasse, waar je de variabelen in zet.
+Je kan dan met een subklasse diezelfde variabelen aanspreken en gebruiken.
+
+>"The subclass extends the superclass"
+> 
+> (een klasse extends niet als je geen is-a kan doen.)
+>
+> Je kan maar 1 klasse extenden.
+
+Je neemt niet alleen de variabelen over maar ook de methodes.
+
+Maak alleen een subklasse als je de klasse meer specifiek moet maken.
+
+In de subclass kan je ook nog eigen variabelen toevoegen en zelfs methodes overschrijven (@override https://www.youtube.com/watch?v=2b7B1n84dY4)
+
+Om een subklasse te maken gebruik je extends in je klasse en verwijs je naar de superklasse.
+>public class FamilyDoctor **extends** Person {
+
+Je kan ook de methode van de superklasse uitbreiden. In de subklasse voeg je **super()** toe. (https://www.youtube.com/watch?v=hLYOpvoM4vk&)
+
+####Wanneer gebruik je override en wanneer gebruik je super?
+>"Wil ik alle functionaliteit van de methode uit de superklasse en daarna nog iets extra's toevoegen?". Dan gebruik je super(). 
+> 
+>"Wil ik een gedeelte van de functionaliteit of wil ik de functionaliteit van de methode aanpassen?" Dan gebruik je @Override.
+---
+###Polymorphism
+https://www.youtube.com/watch?v=Ft88V_rDO4I
+
+> "Wanneer je een superklasse definieert, kan elke subklasse vervangen worden door zijn supertype."
+ 
+>Overerving garandeert dat alle klassen gegroepeerd onder een superklasse dezelfde methodes hebben als de superklasse.
+---
+###Abstract
+
+https://www.youtube.com/watch?v=52frlN8webg
+
+Om een klasse abstract te maken moet je tussen public en class het woord **"abstract"** plaatsen.
+>public abstract class Person
+
+Als je een abstracte methode toevoegt aan een klasse moet de klasse ook abstract zijn.
+
+Je gebruikt een abstracte klasse alleen om extend te worden. (soort template van een klasse)
+
 ---
