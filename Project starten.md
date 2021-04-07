@@ -1,8 +1,8 @@
-#Project starten
+# Project starten
 
-###Verschillende fases:
+### Verschillende fases:
 
-####Onderzoeksfase
+#### Onderzoeksfase
 
 > Doel van de applicatie bedenken.
 > * Wat zijn de doelstellingen van de applicatie?
