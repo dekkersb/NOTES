@@ -2,6 +2,14 @@
 
 ### Verschillende fases:
 
+Planning
+
+Project planning (oplevermomenten)
+Tabel of kalenderschema.
+De plaats van het projet in de organisatie? Wie zijn de betrokkenen(key stakeholders)
+Wat zijn de kosten en baten
+wat zijn de resources (ontwikkelaars, systemen. tools)
+
 #### Onderzoeksfase
 
 > Doel van de applicatie bedenken.
@@ -14,6 +22,13 @@
 
 #### Ontwerpfase
 
+Hoe werkt het systeem (beschrijving functionaliteiten, UML use case diagram, use case scenario's)
+User stories
+Beschrijving techniek, UML class diagram, UML sequence diagram, data model
+
+Hoe ziet het syteem er grafisch uit, wat is de flow door de applicatie heen?
+Schetsen op papier / Story-board / Wireframes / mock-ups
+
 > Functionele kant
 > * Uiterlijk van de applicatie
 > * Welke stappen moeten er gezet worden in de applicatie
@@ -24,6 +39,15 @@
 > * Welke apparaten spelen een rol in het systeem?
 
 ---
+
+Ontwikkeling
+Word in kleine stappen ontwikkeld, bijv per use case of module
+Tegenwoordig vaak in korte sprints van 2 weken (SCRUM methode)
+
+Verschillende types applicaties: console, desktop, web, mobiel
+Applicatie maken in een IDE
+Code wordt in versiebeheer systeem bijgehouden (Github etc.)
+Nieuwe versie van een applicatie wordt een nieuwe release genoemd, vaak genummerd zoals 1.0.2
 
 #### Grotere projecten
 
@@ -45,7 +69,8 @@
 Documentatie om de applicatie te onderhouden of te gebruiken
 - Handleiding over de werking van de applicatie voor de gebruikers
 - Commentaar toevoegen zodat er duidelijk is wat de applicatie op welk moment doet en waarom hiervoor gekozen is.
-
+- Bug reports & crash log files worden gebruikt om bugs te fixen.
+- Bij grote wijzigingen begint het ontwikkelproces gewoon weer opnieuw.
 ---
 
 ### Requirements opstellen

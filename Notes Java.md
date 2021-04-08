@@ -4,17 +4,18 @@
 - Klassenaam Hoofdletter en overeenkomen met bestandsnaam.
 - Methodenamen kleine letters.
 - Variabelen kunnen 1 waarde bevatten en maar 1 datatype hebben.
--
+
 ---
 ### Comparison operators Java
-- ==
-- !=
-- .>
-- <
-- .>=
-- <=
+- ==  (is gelijk aan)
+- !=  (is niet gelijk aan)
+- .>  (groter dan)
+- <   (kleiner dan)
+- .>=   (groter of gelijk aan)
+- <=  kleiner of gelijk aan)
 
-- String vergelijken gaat met:
+
+String vergelijken gaat met:
 > Als je in Java twee variabelen van het datatype String met elkaar wilt vergelijken, doe je dat niet met de ==-operator, maar met de equals() of equalsIgnoreCase()-methode.
 ---
 ### Java Primitieve datatypes
@@ -369,3 +370,42 @@ Als je een abstracte methode toevoegt aan een klasse moet de klasse ook abstract
 Je gebruikt een abstracte klasse alleen om extend te worden. (soort template van een klasse)
 
 ---
+### Scope
+https://www.youtube.com/watch?v=6b_0DFljP_0
+
+Scope is in principe tot wanneer is een variabele aanroepbaar?
+Dit kan je goed zien aan de { }. Tussen welke {} staat het.
+ 
+>* Klasse scope (alleen binnen een klasse bereikbaar) 
+>* Methode scope (alleen binnen een methode bereikbaar)
+>* Loop scope (alleen binnen de loop bereikbaar)
+>* Bracket scope (alleen binnen de {} bereikbaar)
+
+---
+### Keywords
+
+Keywords zijn vooraf gereserveerde woorden die je niet kan gebruiken als packagenaam, klassenaam of methodenaam.
+
+Er zijn meer dan 50 keywords, je kent er al een paar:
+
+> - abstract
+> - public 
+> - if
+> - while
+> - super 
+> - int
+> - extends
+> - package
+
+Nog belangrijke keywords zijn:
+
+> - final (Wil je voorkomen de een klasse extend kan worden of methodes of variabelen overriden kan je final toevoegen.)
+> 
+> 
+>- this https://www.youtube.com/watch?v=CSWrefLneXE
+> 
+> This verwijst naar de huidige object-instantie van de klasse of om methodes uit dezelfde klasse aan te roepen.
+is niet verplicht maar maakt je code leesbaarder. 
+> - var https://www.youtube.com/watch?v=qRuGoUy5fUI
+>
+> Is een keyword die automatisch de datatype van een variable toekent, als deze de waarde leest.

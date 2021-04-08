@@ -20,6 +20,7 @@
 > 3. Wissel tussen branch -> git checkout (naam branch)
 > 4. Branch pussen naar git -> git push origin (naam branch)
 > 5. Merge je branch met de main -> git merge (branch naam)
+> 6. Ga via je github naar je branch en klik op pull request, deel deze link met iemand om je code te bekijken.
 
 Extra stappen: 
 > * naam wijzigen lokaal branch -> git branch -m (oude naam)(nieuwe naam)
