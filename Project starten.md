@@ -2,12 +2,12 @@
 
 ### Verschillende fases:
 
-Planning
+### Planning
 
-Project planning (oplevermomenten)
-Tabel of kalenderschema.
-De plaats van het projet in de organisatie? Wie zijn de betrokkenen(key stakeholders)
-Wat zijn de kosten en baten
+> - Project planning (oplevermomenten)
+> - Tabel of kalenderschema.
+> - De plaats van het projet in de organisatie? Wie zijn de betrokkenen(key stakeholders)
+> - Wat zijn de kosten en baten
 wat zijn de resources (ontwikkelaars, systemen. tools)
 
 #### Onderzoeksfase
@@ -22,9 +22,9 @@ wat zijn de resources (ontwikkelaars, systemen. tools)
 
 #### Ontwerpfase
 
-Hoe werkt het systeem (beschrijving functionaliteiten, UML use case diagram, use case scenario's)
-User stories
-Beschrijving techniek, UML class diagram, UML sequence diagram, data model
+> - Hoe werkt het systeem (beschrijving functionaliteiten, UML use case diagram, use case scenario's)
+> - User stories
+> - Beschrijving techniek, UML class diagram, UML sequence diagram, data model
 
 Hoe ziet het syteem er grafisch uit, wat is de flow door de applicatie heen?
 Schetsen op papier / Story-board / Wireframes / mock-ups
