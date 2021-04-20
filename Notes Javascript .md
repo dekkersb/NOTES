@@ -40,7 +40,7 @@ switch (fruit) {
     console.log('Er is geen vrucht gekozen');
 }
 ```
-
+---
 ### Array's
 Array is een lijst waarin waardes zijn opgeslagen.
 
@@ -57,6 +57,7 @@ lasagneIngredients.length;
 ```javascript
 lasagneIngredients[3] = "Kokosolie";
 ```
+---
 ### Objects
 Een object groepeert variabelen bij elkaar die iets met elkaar gemeen hebben.
 
@@ -80,7 +81,7 @@ Waardes aanpassen in een object:
 ```javascript
 recipe.cookingTime = 55;
 ```
-
+---
 ### Forloops javascript
 Een loop wordt gebruikt om herhaaldelijk dezelfde code uit te voeren.
 ```javascript
@@ -88,7 +89,7 @@ for (let i = 0; i < 10; i++) {
     console.log("counting", i);
 }
 ```
-
+---
 ### Functies
 Een functie is een groepje statements en expressies die samen een specifieke taak uitvoeren.
 
@@ -141,6 +142,266 @@ function getAreaSizes(width, length, depth) {
 const kitchenSizes = getAreaSizes(4, 4, 2.5);
 console.log(kitchenSizes); // geeft [16, 40]
 ```
+---
+#### Arrow Functions
 
+De nieuwe 'verkorte' manier om functies te gebruiken.
+```javascript
+const getArea = (width, length) => {
+   return width * length;
+}
 
+// wanneer je alleen een return-statement in de functie hebt staan mag je het zelfs verkorten tot:
+const getArea = (width, length) => width * length;
 
+getArea(3, 4);
+```
+---
+### Scope
+
+Scope geeft aan in hoever variabelen toegankelijk zijn.
+Dit kan je goed zien door middel van de { } waartussen de variabelen staan.
+
+De lokale scope kan wel naar buiten kijken, maar je kan niet van buiten de scope naar binnen kijken.
+Bij functies geldt hetzelfde principe.
+---
+
+### Methodes
+
+Een methode is een functie als property in een object.
+
+```javascript
+// 1. FUNCTIE
+function congratulate() {
+  console.log("Gefeliciteerd!");
+}
+
+// 2. METHODE, want hij is een property op het birthday object
+const birthday = {
+  congratulate: function () {
+      console.log("Gefeliciteerd!");
+  },
+};
+```
+
+In JavaScript zitten heel veel ingebouwde functies met methodes die gegroepeerd zijn in een aantal ingebouwde JavaScript objecten:
+
+#### String object (strings bewerken)
+> Als je met een string object gaat werken krijgt iedere karakter een indexnummer (begint bij 0)
+> * toUppercase() (alle letters naar hoofdletters)
+> * toLowercase() (alles naar kleine letters)
+> * charAt() (returned het karakter dat op het gevraagde indexnummer staat)
+> * indexOf() (returned het indexnummer van de plek waarop het opgevraagde karakter het eerst voorkomt)
+> * lastIndexOf()  (returned het indexnummer van de plek waarop het opgevraagde karakter het laatst voorkomt)
+> * substring()  (returned alle karakters tussen de meegegeven indexnummers)
+> * split() (hakt de string in stukjes op basis van een conditie en returned de stukjes in een array)
+> * trim() (verwijdert spaties aan het begin en einde van een string)\
+> * replace() (vervangt alle instanties van de gespecificeerde karakters met iets anders)
+> * includes() (checkt of de string een specifiek karakter(s) bevat)
+
+#### Math object (rekenkundige operaties uitvoeren)
+> Bij math objecten moet je altijd de naam van het globale Math object benoemen!
+> * Math.PI is een property (dus gebruik je niet de ronde haken!) en bevat het wiskundige getal pi
+> * Math.round() rondt een getal af naar het dichtstbijzijnde hele getal
+> * Math.sqrt() geeft de wortel van een getal terug
+> * Math.ceil() rondt een getal naar boven af
+> * Math.floor() rondt een getal naar beneden af
+> * Math.random() genereert een random getal tussen 0 en 1 - en is dus bij iedere aanroep anders!
+
+#### Date object (datums maken en formatteren)
+> Om met datums te werken gebruik je Date object, zo een object representeert 1 specifiek moment in de tijd.
+> Wanneer je een nieuwe date instantie maakt zonder specificaties zal deze automatisch "nu" worden.
+```javascript
+const dateOfBirth = new Date('Dec 26, 1992 15:45:55');
+const dateOfBirth = new Date(1992, 11, 26, 15, 45, 55);
+const dateOfBirth = new Date(1992, 11, 26);
+```
+> * getTime() - geeft het aantal milliseconden dat zijn verstreken sinds de epoch
+> * getDay() - geeft de dag van de week (0 - 6)
+> * getHours() - geeft het uur (0 - 23)
+> * getMinutes() - geeft de minuten (0 - 59)
+> * getMonth() - geeft de maand (0 - 11)
+> * getSeconds() - geeft het aantal seconden (0 - 59)
+```javascript
+const dateOfBirth = new Date(1992, 11, 26);
+
+// Hier hebben we niet zoveel aan:
+const englishDate = dateOfBirth.toDateString(); // geeft Sat Dec 26 1992
+
+// Nederlandse versie voluit
+const longOptions = { 
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric', 
+};
+
+const dutchDate = dateOfBirth.toLocaleDateString('nl-NL', longOptions); // geeft zaterdag 26 december 1992
+        
+// Nederlandse versie kort
+const shortOptions = {
+  weekday: 'short', 
+  month: 'long',
+  day: 'numeric',
+};
+
+const dutchShortDate = dateOfBirth.toLocaleDateString('nl-NL', shortOptions); // geeft za 26 december
+```
+
+#### Array object (om arrays te bewerken)
+> Werk je met het type array dan heb je array methodes nodig:
+> * concat() - voegt twee arrays samen 
+> * includes() - checkt of één van de items in de array een bepaalde waarde bevat, zoals “Lasagne bladen” of het getal 45. 
+> * indexOf() - checkt het indexnummer van het item in de array met een bepaalde waarde, zoals “Lasagne bladen” 
+> * join() - maakt een string van alle items in de array door ze achter elkaar te plakken. Wanneer je een argument meegeeft, zoals bijvoorbeeld een spatie, wordt deze tussen de items geplaatst.
+> * push() - “pusht” een nieuw item, ofwel: voegt een item toe aan het einde van de array 
+> * reverse() - draait de volgorde van de array om 
+> * pop() - verwijdert het laatste item in de array en returned deze waarde 
+> * shift() - verwijdert het eerste item in de array en returned deze waarde 
+> * slice() - maakt een referentieloze kopie van een deel van de array. Dit betekent dat de originele array niet wordt aangepast. Dit kan handig zijn omdat je soms niet de originele array wil aanpassen, wat alle bovenstaande methodes wel doen.
+> * splice() - voegt een item toe, vervangt of verwijderd een item op basis van indexnummer in de array. Het is dus een hele diverse methode die op verschillende manieren gebruikt kan worden! Deze methode verwacht drie parameters:
+
+>  1. Het indexnummer (dus de positie) waar de operatie moet plaatsvinden
+>  2. Hoeveel items er verwijderd moeten worden (wil je niets weghalen? Dan vul je 0 in)
+>  3. Wat er toegevoegd moet worden (wil je niets toevoegen? Dan vul je 0 in)
+
+### Destructuring
+
+Het beknopter opschrijven van variabelen die vaker terug komen.
+Het is belangrijk dat je de keys van het object exact overneemt anders krijg je undefined.
+
+```javascript
+const person = {
+  firstname: 'Henk',
+  lastname: 'Pieters',
+  city: 'Amsterdam',
+};
+
+const first = person.firstname;
+const last = person.lastname;
+
+//word:
+
+const { firstname, lastname } = person;
+```
+Het aanpassen van de data binnen destructuring kan ook dmv : daarmee overschrijf je de oorsponkelijke key.
+
+```javascript
+const studentInfo = {
+    first: 'Henk',
+    last: 'Pieters',
+    contact: {
+        email: {
+          home: 'henkpieters@gmail.com',
+          education: 'h.pieters@novi-education.nl',
+        },
+    }
+};
+
+const education = "Hogeschool Novi";
+
+const { home, education: universityEmail } = studentInfo.contact.email;
+
+console.log(education); // geeft "Hogeschool Novi"
+console.log(universityEmail) // geeft "h.pieters@novi-education.nl"
+```
+
+Het hernoemen van verschillende variabelen gaat dus vrij makkelijk met destructureren:
+```javascript
+const dog = { name: "Pluisje", color: "black" };
+const cat = { name: "Minoes", color: "red" };
+
+const { name: dogName } = dog;
+const { name: catName } = cat;
+
+console.log(dogName) // geeft "Pluisje"
+console.log(catName) // geeft "Minoes"
+```
+
+Je kan ook Array's desctructuren. Ipv de {} gebruik je nu de [] haken.
+Alleen bij Array's kan je ze niet hernoemen. Dit is allemaal afhankelijk van de volgorde van de array.
+
+```javascript
+const someArray = ['one', 'two', 'three'];
+
+const [third, second, first] = someArray;
+
+console.log(first); // geeft "three"
+console.log(second); // geeft "two"
+console.log(third); // geeft "one"
+```
+Wil je bij een array bepaalde variabelen of object aanspreken gaat dit met een extra komma.
+```javascript
+function getNames() {
+  return ['Henk', 'Piet', 'Jan'];
+}
+
+const [nameOne, nameTwo, nameThree] = getNames();
+console.log(nameOne); // geeft "Henk"
+console.log(nameTwo); // geeft "Piet"
+console.log(nameThree); // geeft "Jan"
+//----------------------------------
+const [first,, second] = getNames();
+
+console.log(first); // geeft "Henk"
+console.log(second); // geeft "Jan"
+//----------------------------------
+function getNames() {
+    return ['Henk', 'Piet', 'Jan', 'Klaas'];
+}
+
+const [first, ...rest] = getNames();
+
+console.log(first); // geeft "Henk"
+console.log(rest); // geeft ['Piet', 'Jan', 'Klaas']
+```
+
+### Truthy en falsy
+Soort van war en soort van niet waar.
+
+## TESTEN!
+Testen is superbelangrijk! Je zelf continu tussendoor testen zorgt dat je op tijd bij fouten bent.
+CHECK YO SELF BEFORE YOU WRECK YO SELF!
+
+Dit kan natuurlijk automatisch, maar dit kost werk om op te zetten. Zie het als een investering.
+
+Een veelgebruikte testing library voor Javascript is Jest.
+
+Als je denkt dit moet makkelijker kunnen is er vast al een andere developer die dit heeft gemaakt en openbaar aanbied.
+Dit soort dingen staan op NPM (NODE PACKAGE MANAGER) als je iets download dan download je een package.
+Als je deze integreert in je code heet dit een dependency.
+
+Dependencies zijn nodig om de applicatie te draaien.
+
+Development dependencies zijn nodig tijdens het ontwikkelen. (zoals Jest)
+
+Alle dependencies die we in een project installeren komen in de map node-modules terecht.
+DEZE MAP NOOIT VERSTUREN NAAR GITHUB. altijd node_modules toevoegen aan git ignore bestand.
+
+NPM vertrouwt op package.json hierin staat een lijst die alle packages van het project bijhouden.
+
+package.json aanmaken:
+```javascript
+npm init
+//stappen doorlopen en daarna zal er ongeveer zo uit zien:
+{
+    "name": "De-naam-van-jouw-project-map",
+    "version": "1.0.0",
+    "description": "Dit project is een demo voor het gebruik van packages!",
+    "main": "index.js",
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+},
+    "keywords": ["demo", "project", "novi", "hogeschool"],
+    "author": "Piet pieters",
+    "license": "ISC",
+    "dependencies": {
+}
+}
+//Bij installeren van een dependencie altijd aangeven om welk type het gaat:
+// gewone dependency
+npm install NAAM-VAN-DE-PACKAGE --save
+
+// development dependency
+npm install NAAM-VAN-DE-PACKAGE --save-dev
+```
