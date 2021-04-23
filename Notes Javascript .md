@@ -265,6 +265,20 @@ const dutchShortDate = dateOfBirth.toLocaleDateString('nl-NL', shortOptions); //
 >  2. Hoeveel items er verwijderd moeten worden (wil je niets weghalen? Dan vul je 0 in)
 >  3. Wat er toegevoegd moet worden (wil je niets toevoegen? Dan vul je 0 in)
 
+### Array methodes
+
+#### map()
+> Geeft een nieuwe array terug, waarin de waardes van de oude array en de gemaakte aanvullingen staan. De orginele array wordt niet aangepast.
+
+#### filter()
+> Geeft een nieuwe array terug met alle waardes die voldoen aan de gestelde conditie, orginele array wordt niet aangepast.
+
+#### find()
+> Geeft een enkele waarde terug, het eerste element dat voldoet aan de gestelde conditie.
+
+#### sort()
+> Geeft niets terug maar sorteert de bestaande array op basis van de gestelde conditie.
+
 ### Destructuring
 
 Het beknopter opschrijven van variabelen die vaker terug komen.
@@ -405,3 +419,62 @@ npm install NAAM-VAN-DE-PACKAGE --save
 // development dependency
 npm install NAAM-VAN-DE-PACKAGE --save-dev
 ```
+
+Jest:
+-Arrange (klaarzetten).
+-Act (handelen).
+-Assert (beweren).
+
+Jest expect functie.
+
+Code loskoppelen van de tests.
+
+1. Maak een package.json aan door npm te initialiseren "**npm init**".
+2. Installeer jest met het commando "**npm install jest --save-dev**"
+3. Voeg de node_modules toe aan de .gitignore file.
+4. Voeg "**npx jest**" toe aan de **test key** in de package.json en "n**px jest --watch**" (of --watchAll als je zonder git bezig bent) aan de **test:watch key**.
+5. Maak een map genaamd "**__tests__**" en stop daar jouw testbestand in "index.test.js".
+6. Roep daarin de "test functie" aan en geef deze een beschrijving en anonieme functie mee
+```javascript
+test("Controleer of de test wel werkt", ()=>{
+    console.log("Ik wordt uitgevoerd!");
+})
+```
+7. Test altijd eerst even of dit werkt met een "console.log" en voer het test commando uit: "npm run test"
+8. ARRANGE: zet de waardes klaar waar je mee gaat testen
+9. ACT: voer de functie uit en geef de gecontroleerde waardes daaraan mee.
+10. ASSERT: maak een bewering over de verwachte uitkomst en vergelijk dit met de daadwerkelijke uitkomst door middel van de "**expect**" functie, met daaraan een beweringsfunctie gekoppeld zoals "**.toEqual**".
+
+Loskoppelen van de code.
+11. Maak een apart bestand met een gewone ".js" extensie (zoals index.js) 
+12. Plak de functies daar in en haal ze weg uit het test-bestand.
+13. Exporteer de functies met "module.exports = {naam: functieNaam }"
+14. Importeer de functies in het testbestand met de "require" functie die wijst naar het pad waar de functies in staan (const add= require("../index.js).add)
+15. Bonus: schrijf het netter op door destructuring te gebruiken.
+```javascript
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+function findByName (names, user){
+    for (let i = 0; i < names.length; i++) {
+        const currentUser = names[i];
+        if (currentUser.name === user){
+            return currentUser;
+        }
+    }
+    return null;
+}
+
+module.exports = {
+    add: add,
+    findByName: findByName,
+}
+```
+```javascript
+const add = require("../index").add;
+const findByName = require("../index").findByName;
+
+const { add, findByName } = require("../index");
+```
+

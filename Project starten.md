@@ -1,6 +1,12 @@
 # Project starten
 
 ### Verschillende fases:
+Volgorde:
+1. Tekstuele beschrijving
+2. Use case diagram
+3. Use case scenario's
+4. UML class diagram  
+5. Sequence diagram
 
 ### Planning
 
@@ -90,3 +96,10 @@ Je hebt hiervoor verschillende eisen, functionele eisen en niet functionele eise
 - Veiligheid
 
 ---
+
+## Functioneel Ontwerp
+Beschrijving van de functionaliteiten, UML use case diagram, use case scenario's.
+
+
+## Technisch Ontwerp
+Beschrijving van de techniek, UML class diagram, UML sequence diagram, data model, security.
