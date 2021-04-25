@@ -77,6 +77,15 @@ SET start_datum = '2021-03-01'
 ,   ects = 20
 WHERE id = 6;
 
+JOIN STATEMENT
+
+Verschillende tabellen samenvoegen.
+Als de voolean op true uitkomt zal de combinatie worden gekoppeld in de output.
+```sql
+T1 { [INNER] | { LEFT | RIGHT | FULL } [OUTER] } JOIN T2 ON boolean_expression
+```
+
+
 CRUD operaties
 C = Creat
 R = Read

@@ -266,18 +266,97 @@ const dutchShortDate = dateOfBirth.toLocaleDateString('nl-NL', shortOptions); //
 >  3. Wat er toegevoegd moet worden (wil je niets toevoegen? Dan vul je 0 in)
 
 ### Array methodes
+Je moet bij array methodes altijd een callback functie meegeven. Een callback is een functie die wordt aangeroepen door een andere functie, waarbij deze als parameter meegegeven wordt.
+De orginele array's blijven intact.
+```javascript
+const students = ['Henk Jansen', 'Piet Pieters', 'Marieke Smit'];
 
+students.map(() => {
+   console.log('Student!');
+});
+```
 #### map()
 > Geeft een nieuwe array terug, waarin de waardes van de oude array en de gemaakte aanvullingen staan. De orginele array wordt niet aangepast.
 
-#### filter()
+>Een soort for loop type, als je returned in een variabele wordt het altijd een array!
+> De parameter die je de callback meegeeft (altijd enkelvoud van de naam van de array zelf) bevat altijd de volledige entry van de loop
+> Maak een variabele aan om de return type op te slaan.
+```javascript
+const outcome = students.map((student:string) => {
+    console.log(student);
+});
+```
+
+#### filter() (alle resultaten die voldoen terug)
 > Geeft een nieuwe array terug met alle waardes die voldoen aan de gestelde conditie, orginele array wordt niet aangepast.
 
-#### find()
-> Geeft een enkele waarde terug, het eerste element dat voldoet aan de gestelde conditie.
+```javascript
+const students = [
+   {
+       name: 'Henk Jansen',
+       course: 'FSD Bootcamp',
+       averageGrade: 7,
+   },
+   {
+       name: 'Piet Pieters',
+       course: 'HBO Software development',
+       averageGrade: 6,
+   },
+   {
+       name: 'Marieke Smit',
+       course: 'FSD Bootcamp',
+       averageGrade: 7.5,
+   },
+];
 
+const bootcampStudents = students.filter((student) => {
+    return student.course === 'FSD Bootcamp';
+    // je kunt dit ook uitschrijven als:
+    // if (student.course === 'FSD Bootcamp') {
+    //    return true
+    // }
+})
+```
+#### find() (altijd maar 1 resulaat terug(de eerste die die vindt))
+> Geeft een enkele waarde terug, het eerste element dat voldoet aan de gestelde conditie.
+> De find methode is hetzelfde als hierboven alleen stopt deze als hij de eerste waarde vind.
 #### sort()
 > Geeft niets terug maar sorteert de bestaande array op basis van de gestelde conditie.
+Sorteren gebeurt door het herhaaldelijk vergelijken van twee waardes: de huidige (a) met de vorige (b)
+> *  Een negatief getal (dan moet a vóór b komen te staan)
+> * Een positief getal (dan wordt b vóór a komen te staan)
+> * Het cijfer 0 (dan zijn beide waardes gelijk)
+```javascript
+const numbers = [3, 1, 5, 4, 2];
+
+numbers.sort((a, b) => {
+   // als a groter is dan b, geef een positief getal terug
+   if (a > b) {
+       return 1;
+   }
+   // als a kleiner is dan b, geef een negatief getal terug
+   if (a <  b) {
+       return -1;
+   }
+
+   // als bovenstaande condities allebei niet waar zijn,
+   // zijn de waardes even groot
+   return 0;
+})
+
+console.log(numbers); // geeft [ 1, 2, 3, 4, 5 ]
+
+// laag naar hoog:
+numbers.sort((a, b) => {
+    return a - b;
+})
+
+// of zelfs nog korter, omdat we slechts één regel in onze functie hebben staan:
+numbers.sort((a, b) => a - b);
+
+//hoog naar laag:
+numbers.sort((a, b) => b - a);
+```
 
 ### Destructuring
 
@@ -395,7 +474,7 @@ DEZE MAP NOOIT VERSTUREN NAAR GITHUB. altijd node_modules toevoegen aan git igno
 NPM vertrouwt op package.json hierin staat een lijst die alle packages van het project bijhouden.
 
 package.json aanmaken:
-```javascript
+```
 npm init
 //stappen doorlopen en daarna zal er ongeveer zo uit zien:
 {
@@ -478,3 +557,96 @@ const findByName = require("../index").findByName;
 const { add, findByName } = require("../index");
 ```
 
+## Koppelen aan je webpagina
+
+Je koppelt je javascript pagina net als je CSS bestand in je Html pagina met de script tag.
+
+```html
+<script src="main.js"></script>
+```
+
+Het interacteren met HTML gaat niet zomaar, hier heb je DOM voor nodig (Document Object Model)
+
+Dit is een losstaande set regels.
+
+* Een model van een HTML pagina maken
+* Javascript toegang geven tot onderdelen op de pagina om ze aan te kunnen passen.
+
+In DOM praat je niet over HTML elementen maar over NODES.
+Alle nodes samen is de document node. Je begint altijd bij de document node.
+
+Wanneer je iets aan wilt passen in de DOM tree moet je de volgende stappen nemen:
+1. Lokaliseer de plek van het het element waar je mee wil werken en sla deze referentie op.
+    * Een enkel element: wellicht willen we een element toevoegen aan de <div> node. Om dit element te lokaliseren gebruiken we zijn unieke id attribuut:
+```html
+const container = document.getElementById("page");
+```
+ * Meerdere elementen tegelijkertijd: wellicht willen we alle <li< nodes selecteren om een aanpassing te maken. Dit kan op basis van hun class-attribuut (die is immers hetzelfde) en geeft een array met nodes terug.
+```html
+const listItems = document.getElementsByClassName("ingrediënt");
+```
+
+2. Aanpassingen 
+   maken
+Wanneer je het element hebt gevonden kun je aanpassingen maken.
+   * Een nieuwe node maken
+    
+```html
+const warningMessage = document.createElement(‘p’);. 
+```
+* Een attribuut toevoegen.
+```html
+warningMessage.setAttribute(‘class’, ‘warning’);
+```
+* Een attribuut verwijderen.
+    
+```html
+warningMessage.removeAttribute(‘class’);
+```
+* Tekst toevoegen
+```html
+warningMessage.textContent = “Hier wordt je dik van”;
+```
+
+* Een element toevoegen aan de DOM tree
+```html
+container.appendChild(warningMessage);
+```    
+
+## Event Listeners
+
+We willen ook kunnen reageren op acties van de gebruikers. Dit gaat op de volgende manier:
+
+1. Interactie triggert een event (zoals een muisklik of het invoeren van tekst)
+2. Dit event triggert code (zoals een specifieke functie)
+3. De code reageert op de gebruiker (door bijvoorbeeld een aanpassing te maken in de DOM)
+
+Om een event te kunnen triggeren heb je een event listener nodig.
+Die zet je op een specifiek element die wacht tot er iets gebeurt. En wanneer dit gebeurt zal de event listener uitvoeren.
+
+Verschillende soorten events:
+
+* Keyboard events - heeft een gebruiker een toets ingedrukt of losgelaten?
+* Mouse events - heeft de gebruiker iets met de muis gedaan?
+* Focus events - wordt een invoerveld gebruikt?
+* Clipboard events - is er iets gekopieerd, geplakt of geknipt?
+* Form events - is het formulier verstuurd of gereset?
+* View events - is er iets met de weergave gebeurd?
+
+Iedere keer als er een event wordt getriggered zal de event listener een event object aanmaken.
+Daarin staat alle informatie wat zojuist gebeurd is. 
+Welke toets bij een keyboard event, welk element etc.
+
+Wil je dit event object gebruiken dan moet je event als parameter verwachten. Dit geef je aan met (e).
+
+Verschillende dingen die je kan vinden:
+* keycode - welke knop heeft de gebruiker ingedrukt.
+* timestamp - welk moment werd dit event getriggered.
+* target value - de waarde van het input veld toen het event werd getriggered.
+
+Wanneer je een functie wilt aanroepen op basis van een event gebruik je:
+```html
+button.addEventListener('click', () => {
+ calculateSum(2,4);
+});
+```
