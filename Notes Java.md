@@ -119,6 +119,9 @@ public class VoorbeeldMetReturn {
 3. return type (data type wat je terug wilt geven, anders void)
 4. methodenaam
 5. parameters
+
+Methode overloading, je kan een methode ook "overloaden" dit is niks anders dan twee methodes met dezelfde naam maar met verschillende parameters, de returntype mag ook anders zijn.
+Dit kan overigens ook met constructors (verschillende parameters en verschillende datatypen)
 ---
 ### Klassen en objecten
 https://www.youtube.com/watch?v=Mm06BuD3PlY

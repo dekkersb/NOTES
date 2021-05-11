@@ -1,18 +1,13 @@
 # Stuff hopefully investigated tomorrow - list.
 
 ### Java
-
-- Abstracte klasses
 - Interface
 
-
-
-
 ### Javascript
-- wat
+- template string
 
 ### CSS
--  23
+-  niks
 
 ### HTML
-- ok
+- niks
