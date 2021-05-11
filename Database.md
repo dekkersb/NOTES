@@ -80,11 +80,31 @@ WHERE id = 6;
 JOIN STATEMENT
 
 Verschillende tabellen samenvoegen.
-Als de voolean op true uitkomt zal de combinatie worden gekoppeld in de output.
+Als de boolean op true uitkomt zal de combinatie worden gekoppeld in de output.
 ```sql
 T1 { [INNER] | { LEFT | RIGHT | FULL } [OUTER] } JOIN T2 ON boolean_expression
 ```
 
+Met de functie AS verander je de naam van een kolom.
+```sql
+SELECT docent.naam AS docent, cursus.naam AS cursus, cursus.ects 
+  FROM docent 
+  JOIN docent_cursus ON docent_cursus.docent_id=docent.id 
+  JOIN cursus ON cursus.id = docent_cursus.cursus_id;
+```
+Je geeft het primaire attribuut (primary key's) aan door het te onderstrepen:
+```sql
+Docent (_id_, naam, geslacht, in_dienst)
+```
+
+Je geeft vreemde (foreign key's) aan met cursief tekens:
+```sql
+Docent (id, naam, geslacht, in_dienst, salaris) 
+Cursus (id, naam, ects, /hoofdocent/)
+```
+
+* Entiteitsintegriteitsregel wil zeggen dat een primaire sleutel nooit NULL mag zijn en ook niet dubbel mag vóórkomen.
+* Referentiële integriteitsregel wil zeggen dat een vreemde sleutel altijd verwijst naar een primaire sleutel en altijd een waarde heeft, die ook voorkomt als primaire sleutel in de relatie waar de vreemde sleutel naar verwijst of (als dat mag) NULL is.
 
 CRUD operaties
 C = Creat

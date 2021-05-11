@@ -476,6 +476,7 @@ NPM vertrouwt op package.json hierin staat een lijst die alle packages van het p
 package.json aanmaken:
 ```
 npm init
+
 //stappen doorlopen en daarna zal er ongeveer zo uit zien:
 {
     "name": "De-naam-van-jouw-project-map",
@@ -559,7 +560,9 @@ const { add, findByName } = require("../index");
 
 ## Koppelen aan je webpagina
 
-Je koppelt je javascript pagina net als je CSS bestand in je Html pagina met de script tag.
+Je koppelt je javascript pagina net als je CSS bestand in je Html pagina onderaan de body met de script tag.
+
+Altijd even testen met een console.log en dan in de browser console kijken.
 
 ```html
 <script src="main.js"></script>
@@ -592,17 +595,24 @@ Wanneer je het element hebt gevonden kun je aanpassingen maken.
    * Een nieuwe node maken
     
 ```html
-const warningMessage = document.createElement(‘p’);. 
+const header = document.getElementById(‘bigHeader’);
+
+header.textContent = "YOU GOT HACKED!";
 ```
+
 * Een attribuut toevoegen.
 ```html
-warningMessage.setAttribute(‘class’, ‘warning’);
+const paragraph = document.createElement("p")
+
+paragraph.textContent = "bla bla bla"
+
+document.body.appendChild(paragraph)
 ```
 * Een attribuut verwijderen.
     
 ```html
-warningMessage.removeAttribute(‘class’);
-```
+header.remove();
+``` 
 * Tekst toevoegen
 ```html
 warningMessage.textContent = “Hier wordt je dik van”;
@@ -650,3 +660,74 @@ button.addEventListener('click', () => {
  calculateSum(2,4);
 });
 ```
+
+## Gebruik maken van API's
+
+#### HTTP Requests:
+* GET - gegevens ophalen
+* POST - gegevens opslaan
+* PUT - gegevens vervangen/updaten
+* DELETE - gegevens verwijderen
+
+Een request maak je altijd naar een specifiek endpoint.
+
+> Een API wordt ook wel RESTful-endpoints of webservices genoemd. 
+> REST staat voor REpresentational State Transfer en om API RESTful genoemd mag worden moet het aan een set principes voldoen:
+
+* Client/server-architectuur - werkt met HTTP-requests.
+* Stateless - houdt geen verbinding in stand.
+* Cacheable - maakt caching mogelijk om serverbelasting te verminderen.
+* Uniforme interface - er is 1 manier hoe de client met server communiceert ongeacht apparaat of applicatie
+* Resource-gebaseerd - moet voor elke bron een specifiek endpoint hebben.
+
+> In de communicatie is altijd een beetje vertraging, dit proces is asynchroon.
+> Omdat er vertraging in zit kan je interactieve pagina's met dynamisch content maken zonder dat de pagina ververst hoeft te worden.
+> Je spreekt dan over AJAX: Asynchronous Javascript And XML.
+
+## Data ophalen met AXIOS
+
+1. npm init --yes
+2. npm install axios --save
+3. const axios = require('axios');
+
+Verschillende functies:
+* axios.get()
+* axios.post()
+* axios.delete()
+
+De parameter die je aan deze functies meegeeft is het endpoint als string.
+
+Omdat de communicatie asynchroon is hebben we een asynchrone functie nodig die dit ondersteunt.
+Dit zorgt er voor dat de rest van de code pas wordt uitgevoerd nadat we de response hebben ontvangen.
+
+```javascript
+async function fetchData() {
+ try {
+   const result = await axios.get('https://restcountries.eu/rest/v2/all');
+   console.log(result);
+ } catch(e) {
+   console.error(e);
+ }
+}
+
+fetchData();
+```
+
+Keywords:
+* async
+* await
+* try
+* catch
+
+### Promises
+
+Een promise is een object dat wordt gebruikt als proxy (tijdelijke representatie) voor een waarde die nog niet bekend is.
+
+### JSON
+JavaScript Object Notation, om javascript data van de ene naar de andere computer te sturen.
+
+De object keys moeten altijd binnen dubbele aanhalingstekens staan en geen komma na de laatste entry bevatten.
+
+Om javascript data om te zetten naar JSON gebruik je het JSON object (met axios gaat dit vanzelf!):
+* JSON.stringify() - converteert een JavaScript object naar platte tekst, gebruikmakend van de JSON syntax. De data die we willen omzetten, geven we als parameter mee aan de methode.
+* JSON.parse() - converteert platte tekst met JSON data terug naar een JavaScript object. De data die we willen omzetten, geven we als parameter mee aan de methode.
