@@ -11,3 +11,7 @@
 
 ### HTML
 - niks
+
+### React
+- handleSubmit
+- onFormSubmit

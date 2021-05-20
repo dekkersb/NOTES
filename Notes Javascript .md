@@ -689,6 +689,10 @@ Een request maak je altijd naar een specifiek endpoint.
 1. npm init --yes
 2. npm install axios --save
 3. const axios = require('axios');
+4. (of toevoegen van onderstaande code)
+```javascript
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+```
 
 Verschillende functies:
 * axios.get()
